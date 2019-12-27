@@ -3,7 +3,7 @@
 
 simplified setup up for esp8266 / esp32 device 
 
-# tool
+# how it works
 
 the tool discovers first the connected device type with `esptool.py` and
 searches then the available firmware `bin` files in your download folder.
