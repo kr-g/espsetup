@@ -6,7 +6,7 @@ import sys
 import glob
 import argparse
 
-VERSION="v0.0.2"
+VERSION="v0.0.3"
 
 
 def espsetup():
@@ -95,13 +95,18 @@ def espsetup():
                 try:        
                     imgno = input( "enter no to install [0]? " ).strip()
                     if len(imgno)==0:
-                        imgno = 0
-                        break
+                        imgno = "0"                        
                     imgno = int(imgno)
+                    break
+                except KeyboardInterrupt as ex:
+                    raise ex
                 except:
                     pass
-
-            IMAGE = allimages[imgno]
+    
+            try:
+                IMAGE = allimages[imgno]
+            except:
+                continue
             r=input( f"do you want to install {IMAGE} y/[n]? " ).strip()
             if len(r)==0:
                 r = "n"
