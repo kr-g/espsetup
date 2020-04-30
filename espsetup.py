@@ -6,7 +6,7 @@ import sys
 import glob
 import argparse
 
-VERSION="v0.0.3"
+VERSION="v0.0.4"
 
 
 def espsetup():
@@ -64,6 +64,10 @@ def espsetup():
         is_esp = r.find("esp") >= 0        
         is_8266 = r.find("esp8266") >= 0  
         is_32 = r.find("esp32") >= 0  
+
+    if not( is_8266 ^ is_32 ):
+        print("exit")
+        sys.exit(1)
 
     allimages = glob.glob( os.path.expanduser(f"{IMAGEDIR}/esp[32|8266]*.bin") )
     flt = "esp32" if is_32 else "esp8266"
